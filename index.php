@@ -493,7 +493,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Sidebar -->
     <div id="sidebar">
         <h2>📁 Dokumenti</h2>
-        <button class="btn" onclick="showNewPageForm()">+ Nova Stranica</button>
+        <button class="btn" onclick="showNewPageForm()">+ Nova stranica</button>
         <div id="page-tree"></div>
     </div>
 
@@ -527,7 +527,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="actions" style="margin-top: 15px;">
-                <button class="btn" onclick="saveCurrentPage()">💾 Spremi Stranicu</button>
+                <button class="btn" onclick="saveCurrentPage()">💾 Spremi stranicu</button>
                 <button class="btn btn-danger" onclick="deleteCurrentPage()">Izbriši</button>
             </div>
         </div>

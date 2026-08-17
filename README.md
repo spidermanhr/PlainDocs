@@ -2,9 +2,6 @@
 
 Ovo je jednostavan, lagan **Flat-File CMS** sustav za upravljanje bilješkama, dizajniran za brzo stvaranje, uređivanje i organizaciju HTML stranica bez potrebe za bazom podataka (MySQL).
 
-> ![Pregled sučelja](images/PlainDocs_1.png)
-> ![Pregled sučelja](images/PlainDocs_2.png)
-
 ## Značajke
 
 - **Bez baze podataka:** Podaci se spremaju kao fizičke `.html` datoteke u mapi `pages/`.

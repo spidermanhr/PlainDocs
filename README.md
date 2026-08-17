@@ -1,5 +1,8 @@
 # Flat-File CMS / Bilješke
 
+**Verzija:** 1.2.0  
+**Zadnje ažuriranje:** Kolovoz 2026.
+
 Ovo je brz, lagan i moderan **Flat-File CMS** sustav za upravljanje bilješkama, dokumentacijom i člancima. Dizajniran je za jednostavno stvaranje, organizaciju i pregled HTML stranica bez potrebe za bazom podataka (MySQL). Svi se podaci pohranjuju u strukturi čisto oblikovanih datoteka.
 
 ---
@@ -26,7 +29,7 @@ Klikom na **"⚙️ Postavke"** u bočnom izborniku otvara se modalni prozor s n
 - **Širina radne površine:** Odabir maksimalne širine prostora za čitanje i uređivanje:
   - *Standardna (750px)* – Idealno za brzo čitanje i bilješke.
   - *Proširena (1100px)* – Pogodno za dokumentaciju s tablicama.
-  - *Puna širina (100%)* – WySIWYG iskustvo preko cijelog zaslona.
+  - *Puna širina (100%)* – WYSIWYG iskustvo preko cijelog zaslona.
 
 ### 2. Tipografija i Tekst
 - **Odabir fonta:** Prilagodba fonta cijele aplikacije i uređivača (npr. *Segoe UI*, *Arial*, *Georgia*, *Consolas / Monospace*...).
@@ -65,6 +68,25 @@ Sustav povijesti štiti vaše podatke od slučajnog brisanja ili neželjenih izm
 4. **Restoriranje (Vraćanje):**
    - Odabirom opcije za vraćanje stare verzije, sustav zamjenjuje trenutno aktivnu stranicu odabranom arhivom.
    - Prije nego što vrati staru verziju, aplikacija **automatski sprema sigurnosnu kopiju trenutnog stanja**, tako da je postupak u potpunosti siguran i reverzibilan.
+
+---
+
+## 📋 Povijest verzija (Changelog)
+
+### v1.2.0 *(Kolovoz 2026.)*
+- Dodan sustav povijesti verzija (History) i restoriranje arhiviranih datoteka.
+- Dodan napredni modal Postavke (Dark mode, tipografija, stilovi tablica, auto-save, zadani predlošci).
+- Poboljšano rukovanje internim `.html` poveznicama.
+- Prilagođeni dijaloški prozori za potvrdu akcija (custom modal).
+
+### v1.1.0
+- Dodana drvolika hijerarhija stranica (Parent/Child structure).
+- Implementiran sklopivi bočni izbornik s ručnim podešavanjem širine (Resizer).
+- Dodana podrška za dijakritička slova pri generiranju naziva datoteka (slug).
+
+### v1.0.0
+- Inicijalna verzija CMS-a.
+- Integriran CKEditor 5 i osnovno čitanje/pisanje HTML datoteka bez baze podataka.
 
 ---
 

@@ -1,39 +1,80 @@
 # Flat-File CMS / Bilješke
 
-Ovo je jednostavan, lagan **Flat-File CMS** sustav za upravljanje bilješkama, dizajniran za brzo stvaranje, uređivanje i organizaciju HTML stranica bez potrebe za bazom podataka (MySQL).
+Ovo je brz, lagan i moderan **Flat-File CMS** sustav za upravljanje bilješkama, dokumentacijom i člancima. Dizajniran je za jednostavno stvaranje, organizaciju i pregled HTML stranica bez potrebe za bazom podataka (MySQL). Svi se podaci pohranjuju u strukturi čisto oblikovanih datoteka.
 
-## Značajke
+---
 
-- **Bez baze podataka:** Podaci se spremaju kao fizičke `.html` datoteke u mapi `pages/`.
-- **Struktura podataka:** Koristi `conf/structure.json` za pamćenje hijerarhije stranica (parent-child odnosi).
-- **Bogato uređivanje:** Integriran **CKEditor 5** za jednostavno pisanje i formatiranje sadržaja.
-- **Hijerarhijski prikaz:** Sidebar s "drvolikim" prikazom (tree view) stranica.
-- **Automatsko čišćenje:** Automatski kreira potrebne mape i čisti nepostojeće datoteke iz konfiguracije.
-- **Sigurnost:** Automatsko generiranje "slug" naziva za datoteke (podrška za hrvatske znakove).
+## 🚀 Ključne značajke
 
-## Instalacija
+- **Bez baze podataka:** Sadržaj se pohranjuje direktno u `.html` datoteke unutar mape `pages/`.
+- **Drvolika struktura (Tree View):** Podrška za neograničeno ugniježđivanje stranica i podstranica.
+- **Sustav povijesti verzija (History/Backup):** Potpuna kontrola nad izmjenama uz mogućnost pregleda i vraćanja starih verzija.
+- **Napredno prilagođavanje (Postavke):** Prilagodba teme, fontova, stilova tablica, veličine radne površine i učestalosti automatskog spremanja.
+- **Automatsko spremanje:** Spremanje rada u pozadini bez stvaranja viška u povijesti verzija.
+- **Predlošci za nove stranice:** Automatsko umetanje zadanog HTML ili tekstualnog predloška prilikom izrade nove stranice.
+- **Pametne unutarnje poveznice:** Automatsko prepoznavanje i otvaranje internih `.html` poveznica unutar aplikacijskog sučelja (bez osvježavanja cijele stranice).
+- **Sigurnost i čisti URL-ovi:** Podrška za hrvatska dijakritička slova (`č`, `ć`, `đ`, `š`, `ž`) koja se automatski pretvaraju u sigurne "slug" nazive datoteka.
 
-1. Provjerite imate li instaliran PHP (preporučeno 7.4+ ili 8.x).
-2. Kopirajte sve datoteke na vaš server.
-3. **Važno:** Osigurajte da PHP proces ima dozvolu pisanja (write permissions) u korijenskoj mapi projekta kako bi se mogle automatski kreirati mape `pages/` i `conf/`.
-    - Na Linux serverima: `chmod -R 775 .` (ili podesite vlasnika mape na web server korisnika, npr. `www-data`).
+---
 
-## Kako koristiti
+## ⚙️ Detaljan pregled postavki
 
-1. Otvorite `index.php` u pregledniku.
-2. Kliknite **"+ Nova Stranica"** za početak.
-3. Unesite naslov, odaberite roditelja (ako želite pod-stranicu) i uredite sadržaj u editoru.
-4. Kliknite **"Spremi Stranicu"**.
-5. U sidebar-u možete kliknuti na bilo koju stranicu da biste je pregledali, uredili ili izbrisali.
+Klikom na **"⚙️ Postavke"** u bočnom izborniku otvara se modalni prozor s nizom opcija razvrstanih po cjelinama:
 
-## Tehničke napomene
+### 1. Izgled i Tema
+- **Tema sučelja:** Odabir između **Svijetle** i **Tamne (Dark Mode)** teme. Tamna tema u potpunosti prilagođava pozadine, bočni izbornik, modale i CKEditor uređivač za ugodan rad noću.
+- **Širina radne površine:** Odabir maksimalne širine prostora za čitanje i uređivanje:
+  - *Standardna (750px)* – Idealno za brzo čitanje i bilješke.
+  - *Proširena (1100px)* – Pogodno za dokumentaciju s tablicama.
+  - *Puna širina (100%)* – WySIWYG iskustvo preko cijelog zaslona.
 
-- **Dijagnostika:** Skripta trenutno ima uključene `ini_set('display_errors', 1);`. Kada se uvjerite da sve radi ispravno na vašem serveru, **uklonite** ta dva reda s početka datoteke radi sigurnosti.
-- **Struktura:**
-    - `/pages/`: Ovdje se čuvaju vaše kreirane stranice.
-    - `/conf/structure.json`: Ovdje se čuva hijerarhija. Ako se datoteka izbriše, CMS će je pokušati ponovno izgraditi skeniranjem mape `/pages/`.
-- **Editor:** Koristi se CDN verzija CKEditor 5 (Classic build).
+### 2. Tipografija i Tekst
+- **Odabir fonta:** Prilagodba fonta cijele aplikacije i uređivača (npr. *Segoe UI*, *Arial*, *Georgia*, *Consolas / Monospace*...).
+- **Veličina slova:** Povećavanje ili smanjivanje teksta radnog prostora.
+- **Prored (Line-height):** Podešavanje visine linije teksta radi bolje preglednosti.
 
-## Licenca
+### 3. Stiliziranje Tablica
+Prilagodite izgled svih HTML tablica unutar dokumentacije:
+- **Stilovi tablice:**
+  - *Grid* – Klasična tablica s punim obrubima.
+  - *Clean* – Minimalistička tablica samo s horizontalnim linijama.
+  - *Zebra* – Izmjenične boje redova radi lakšeg čitanja opsežnih podataka.
+  - *Dense* – Zbijeni prikaz s manjim razmacima unutar ćelija.
+- **Dodatne opcije tablica:**
+  - *Hover efekt* – Isticanje reda prelazkom miša.
+  - *Sticky header* – Fiksiranje zaglavlja tablice prilikom skrolanja po dugim dokumentima.
+  - *Širina tablica* – Prilagodba na 100% širine ili automatsku širinu prema sadržaju.
 
-Ovaj projekt je besplatan za korištenje i prilagodbu.
+### 4. Ponašanje Aplikacije & Automatsko spremanje
+- **Automatsko spremanje (Auto-save):** Mogućnost uključivanja i postavljanja intervala (npr. svakih 30 s ili 60 s).
+  > *Napomena:* Automatsko spremanje osvježava aktivnu datoteku i ne zatrpava mapu povijesti novim verzijama.
+- **Pamćenje zadnje stranice:** Aplikacija automatski otvara zadnju uređivanu ili pregledavanu stranicu pri ponovnom dolasku.
+- **Zadani predložak:** Mogućnost definiranja unaprijed pripremljenog HTML-a (npr. naslovi, tablice, podsjetnici) koji će se automatski učitati u uređivač pri izradi svake nove stranice.
+
+---
+
+## 🕒 Sustav povijesti i vraćanja verzija (History)
+
+Sustav povijesti štiti vaše podatke od slučajnog brisanja ili neželjenih izmjena:
+
+1. **Automatsko arhiviranje:** Prilikom svakog ručnog klika na **"💾 Spremi stranicu"**, sustav stvara arhivsku kopiju stranice u mapi `history/`.
+2. **Vremenske oznake:** Svaka verzija imenovana je prema datumu i vremenu nastanka (npr. `stranica_2026-08-17_11-00-00.html`).
+3. **Pregled starih verzija:**
+   - Klikom na gumb **"🕒 Povijest"** otvara se popis svih dosadašnjih verzija za trenutno otvorenu stranicu.
+   - Možete odabrati bilo koju staru verziju i pregledati njezin točan sadržaj.
+4. **Restoriranje (Vraćanje):**
+   - Odabirom opcije za vraćanje stare verzije, sustav zamjenjuje trenutno aktivnu stranicu odabranom arhivom.
+   - Prije nego što vrati staru verziju, aplikacija **automatski sprema sigurnosnu kopiju trenutnog stanja**, tako da je postupak u potpunosti siguran i reverzibilan.
+
+---
+
+## 📥 Instalacija i postavljanje
+
+1. Provjerite imate li instaliran **PHP (preporučeno PHP 7.4 ili 8.x)**.
+2. Kopirajte sve datoteke projekta na vaš web server ili lokalno okruženje (Nginx, Apache, XAMPP...).
+3. **Važno:** Provjerite ima li PHP proces dozvole pisanja (*write permissions*) u korijenskom direktoriju kako bi mogao automatski kreirati potrebne mape (`pages/`, `history/`, `conf/`).
+   
+   Na Linux serverima postavite dozvole:
+   ```bash
+   chmod -R 775 .
+   chown -R www-data:www-data .
